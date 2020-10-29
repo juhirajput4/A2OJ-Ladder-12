@@ -1,18 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int t;
-    cin>>t;
-    while(t--){
-        string s;
-        cin>>s;
-        int l=s.length();
-        if(l<=10){
-            cout<<s<<endl;
+    long tc;
+    cin>>tc;
+    while(tc--){
+        long no,ko,andr,lo,po=0,sita;
+        int janch=0;
+        cin>>no>>ko;
+        for(andr=0;andr<no;andr++){
+            cin>>lo;
+            po=po+lo-ko;
+            if(po<0 && janch==0){
+                sita=andr;
+                janch=1;
+            }
         }
-        else{
-            cout<<s[0]<<l-2<<s[l-1]<<endl;
+        if(po>0 &&janch==0){
+            sita=andr+(po/ko);
         }
-    }
+        cout<<sita+1<<endl;
 
+    }
 }
