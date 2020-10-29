@@ -1,17 +1,51 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main(){
-    int i,j,l,r,step;
-    int arr[6][6];
-    for(i=1;i<6;i++){
-        for(j=1;j<6;j++){
-            cin>>arr[i][j];
-            if(arr[i][j]==1){
-               l=i;
-               r=j;
+int main()
+{
+   int wo,ho,no,mo;
+   cin>>wo>>ho>>no>>mo;
+   int verna[no],komal[mo];
+   set<int> pataka,saini;
+   for(int vikrant=0;vikrant<no;vikrant++)
+        cin>>verna[vikrant];
+    for(int vikrant=0;vikrant<mo;vikrant++)
+        cin>>komal[vikrant];
+   for(int vikrant=0;vikrant<no-1;vikrant++)
+   {
+       for(int j=vikrant+1;j<no;j++)
+       pataka.vikrantert(abs(verna[vikrant]-verna[j]));
+   }
+   for(int i=0;i<mo-1;i++)
+   {
+       for(int j=i+1;j<mo;j++)
+       saini.vikrantert(abs(komal[i]-komal[j]));
+   }
+   int ans=0;
+   for(auto vikrant=saini.begin();vikrant!=saini.end();vikrant++)
+   {
+       if(pataka.find((*vikrant))!=pataka.end())
+       {
+           ans++;
+           pataka.erase(*vikrant);
+       }
+   }
+   int jxxx=0;
+   for(int vikrant=0;vikrant<=ho;vikrant++)
+   {
+       int c=0;
+       map<int,int> ch;
+       for(int jss=0;jss<mo;jss++)
+       {
+           int daa=abs(vikrant-komal[jss]);
+           if(pataka.find(daa)!=pataka.end()&&ch[daa]==0)
+            {
+                c++;
+                ch[daa]++;
             }
-        }
-    }
-    step=abs(l-3)+abs(r-3);
-    cout<<step;
+       }
+       if(jxxx<c)
+       jxxx=c;
+   }
+   cout<<ans+jxxx<<endl;
+   return 0;
 }
